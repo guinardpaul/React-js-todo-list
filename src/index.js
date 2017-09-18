@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { Todos } from './Todos';
 import registerServiceWorker from './registerServiceWorker';
+import { TODOS } from './mock.data.js';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(<Todos todos={TODOS} />, document.getElementById('root'));
 registerServiceWorker();
