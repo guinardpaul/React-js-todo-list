@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { TodoItem } from './TodoItem';
 
 export class Todo extends Component {
     constructor(props) {
@@ -21,19 +20,20 @@ export class Todo extends Component {
 
     render() {
         const listTodos = this.state.todos.map((todo, index) => {
-            return <li key={index} className="list-group-item">
-                {todo.titre}
-                <button onClick={this.deleteTodo.bind(this, todo)} className="btn btn-danger"><span className="badge">Delete</span></button>
-            </li>
+            return <li key = { index }
+            className = "list-group-item" > { todo.titre } <
+                button onClick = { this.deleteTodo.bind(this, todo) }
+            className = "btn btn-danger" > < span className = "badge" > Delete < /span></button >
+                <
+                /li>
         });
 
-        return (
-            <div>
-                <ul className="list-group">
-                    {listTodos}
-                </ul>
-            </div>
+        return ( <
+            div >
+            <
+            ul className = "list-group" > { listTodos } <
+            /ul> <
+            /div>
         )
     }
 }
-
