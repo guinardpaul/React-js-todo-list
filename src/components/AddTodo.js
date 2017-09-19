@@ -18,11 +18,12 @@ export class AddTodo extends Component {
 
   addTodo(event) {
     event.preventDefault();
-
-    this.props.onFormSubmit(this.state.todo);
-    this.setState({
-      todo: { titre: '' }
-    });
+    if (this.state.todo.titre !== '') {
+      this.props.onFormSubmit(this.state.todo);
+      this.setState({
+        todo: { titre: '' }
+      });
+    }
   }
 
   render() {
@@ -30,7 +31,7 @@ export class AddTodo extends Component {
       <form className="form-inline" onSubmit={this.addTodo}>
         <div className="form-group">
           <input type="text" name="todo" id="todo" value={this.state.todo.titre} onChange={this.handleChange}
-            className="form-control" placeholder="New Todo . . ." />
+            className="form-control" placeholder="New Todo . . ." required />
           <button type="submit" className="btn btn-primary">Créer</button>
         </div>
       </form>
