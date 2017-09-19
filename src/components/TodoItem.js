@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
+import { CheckTodo } from './CheckTodo';
+import '../css/TodoItem.css';
 
 export class TodoItem extends Component {
-  deleteTodo(item) {
-    const newState = this.state.todos;
-    if (newState.indexOf(item) > -1) {
-      newState.splice(newState.indexOf(item), 1)
-      this.setState({
-        todos: newState
-      });
-    }
+  constructor(props) {
+    super(props);
+
+    this.deleteTodo = this.deleteTodo.bind(this);
+    this.done = this.done.bind(this);
   }
+
+  deleteTodo() {
+    this.props.onDelete(this.props.todo);
+  }
+
+  done(todo) {
+    this.props.handleDone(todo);
+  }
+
   render() {
+    var todoClass = '';
+    if (this.props.todo.done) {
+      todoClass = 'alignText done';
+    } else {
+      todoClass = 'alignText';
+    }
+
     return (
-      <li key={index} className="list-group-item">
-        {this.props.todo.titre}
-        <button onClick={this.deleteTodo.bind(this, this.props.todo)} className="btn btn-danger"><span className="badge">Delete</span></button>
+      <li className="list-group-item">
+        <CheckTodo handleDone={this.done} todo={this.props.todo} /><span className={todoClass}>{this.props.todo.titre}</span>
+        <button onClick={this.deleteTodo} className="btn btn-danger leftAlign"><span className="badge">Delete</span></button>
       </li>
     )
   }

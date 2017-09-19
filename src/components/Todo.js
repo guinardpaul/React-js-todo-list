@@ -1,39 +1,31 @@
 import React, { Component } from 'react';
+import { TodoItem } from './TodoItem';
 
 export class Todo extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            todos: this.props.todos
-        };
+
+        this.handleDelete = this.handleDelete.bind(this);
+        this.todoDone = this.todoDone.bind(this);
     }
 
-    deleteTodo(item) {
-        const newState = this.state.todos;
-        if (newState.indexOf(item) > -1) {
-            newState.splice(newState.indexOf(item), 1)
-            this.setState({
-                todos: newState
-            });
-        }
+    handleDelete(item) {
+        this.props.onDelete(item);
+    }
+
+    todoDone(todo) {
+        this.props.onDone(todo);
     }
 
     render() {
-        const listTodos = this.state.todos.map((todo, index) => {
-            return <li key = { index }
-            className = "list-group-item" > { todo.titre } <
-                button onClick = { this.deleteTodo.bind(this, todo) }
-            className = "btn btn-danger" > < span className = "badge" > Delete < /span></button >
-                <
-                /li>
+        const listTodos = this.props.todos.map((todo, index) => {
+            return <TodoItem handleDone={this.todoDone} todo={todo} onDelete={this.handleDelete} key={index} />
         });
 
-        return ( <
-            div >
-            <
-            ul className = "list-group" > { listTodos } <
-            /ul> <
-            /div>
+        return (
+            <div>
+                <ul className="list-group">{listTodos}</ul>
+            </div>
         )
     }
 }

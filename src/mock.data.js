@@ -1,11 +1,14 @@
 export const TODOS = [
   {
-    titre: "Apprendre React"
+    titre: "Apprendre React",
+    done: false
   },
   {
-    titre: "Vivement Redux"
+    titre: "Vivement Redux",
+    done: true
   },
   {
-    titre: "setState est relou"
+    titre: "setState est relou",
+    done: false
   }
 ]

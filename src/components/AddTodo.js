@@ -30,7 +30,7 @@ export class AddTodo extends Component {
     return (
       <form className="form-inline" onSubmit={this.addTodo}>
         <div className="form-group">
-          <input type="text" name="todo" id="todo" value={this.state.todo.titre} onChange={this.handleChange}
+          <input type="text" name="todo" id="todo" size="49" value={this.state.todo.titre} onChange={this.handleChange}
             className="form-control" placeholder="New Todo . . ." required />
           <button type="submit" className="btn btn-primary">Créer</button>
         </div>

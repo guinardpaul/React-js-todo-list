@@ -1,0 +1,13 @@
+.done {
+  text-decoration: line-through;
+}
+
+.leftAlign {
+  position: absolute;
+  right: 5px;
+}
+
+.alignText {
+  position: absolute;
+  left: 80px;
+}
