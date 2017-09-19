@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TodoItem } from './TodoItem';
 
 export class Todo extends Component {
     constructor(props) {
